@@ -224,7 +224,7 @@ beerNames = beers.stream()
 Create a list of beers that have more than 5.0% alcohol in volume.
 ####Solution
 ```java
-List strongBeers = beers.parallelStream()
+List strongBeers = beers.stream()
         .filter(p -> p.alcoholByValue > 5.0)
         .collect(Collectors.toList());
 ```
@@ -288,7 +288,10 @@ OptionalDouble averageVolume = beers.stream()
 averageVolume.ifPresent(System.out::println);
 ```
 ###Exercise 15
-Print average alcohol by value of bears containing Cascade hop with bottles bigger than 500 ml.
+Print average alcohol of beers:
+- containing Cascade hop 
+- with bottles volume bigger than 500 ml
+
 ####Solution
 ```java
 OptionalDouble averageAlcohol = beers.stream()
