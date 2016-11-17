@@ -18,7 +18,7 @@ Functional Inrerface is interface with exaclty one abstract method. It can be an
 ```java
 Comparator<String> comparator = (String a, String b) -> {return a.compareTo(b);};
 
-beerNames.sort(coparator);
+beerNames.sort(comparator);
 ```
 ###Syntax
 General form of lambda expression is 
@@ -56,7 +56,7 @@ or
 ###Example
 Consider following code snippet.
 ```jave
-Collections.sort(beerNames, (a, b) -> a.compareTo(b) );
+Collections.sort(beerNames, (a, b) -> a.compareTo(b));
 ```
 Since Java 8, `List` interface has `sort` method which takes one parameter - instance of `Comparator`. `Collections.sort` can be replaced as follows:
 ```java
@@ -75,7 +75,7 @@ Collections.sort(beers, new Comparator<Beer>() {
 ####Solution
 Replace `Collections.sort` with `List.sort` and replace anonymous class with lambda:
 ```java
-beers.sort((a, b) -> a.getBottleVolume() - b.getBottleVolume()));
+beers.sort((a, b) -> a.getBottleVolume() - b.getBottleVolume());
 ```
 ##Method References
 Lambda expressions can be replaced with method references. Method reference has following form:
@@ -231,10 +231,10 @@ List strongBeers = beers.parallelStream()
 ###Example
 Creating a map of beers with value of bottle volume as keys:
 ```java
-Map strongBeers = beers.stream()
+Map beersByVolume = beers.stream()
         .collect(Collectors.groupingBy(s -> s.getBottleVolume()));
 
-strongBeers.forEach((k,v) -> System.out.println("key: " + k.toString() + " value: " + v.toString()));
+beersByVolume.forEach((k,v) -> System.out.println("key: " + k.toString() + " value: " + v.toString()));
 ```
 Method `Collectors.groupingBy` is used to create map. It groups elements according to passed classification function.
 ###Exercise 13
@@ -264,7 +264,7 @@ int volumeSum = beers.stream()
           .mapToInt((beer) -> beer.getBottleVolume())
           .sum();
 
-System.out.println(sum);
+System.out.println(volumeSum);
 ```
 ###Example
 Printing maximum bottle volume:
