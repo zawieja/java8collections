@@ -10,9 +10,6 @@ public class CollectionsExercises {
     public static final String HOP_CITRA = "Citra";
 
     public static class Beer {
-        public static final String DELIMETER = " ";
-        public static final String PERCENT_POSTFIX = "% alc";
-        public static final String VOLUME_UNIT = "ml";
 
         private String name;
         private Double alcoholByValue;
@@ -44,9 +41,7 @@ public class CollectionsExercises {
 
         @Override
         public String toString() {
-            return new StringBuilder().append(name).append(DELIMETER).append(bottleVolume.toString())
-                    .append(VOLUME_UNIT).append(DELIMETER).append(hops.toString()).append(DELIMETER)
-                    .append(alcoholByValue.toString()).append(PERCENT_POSTFIX).toString();
+            return name + " " + bottleVolume.toString() + "ml " + hops.toString() + " " + alcoholByValue.toString() + "% alc";
         }
     }
 
