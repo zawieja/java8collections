@@ -276,7 +276,7 @@ OptionalInt maxVolume = beers.stream()
 maxVolume.ifPresent(System.out::println);                
 ```
 ####Explanation
-Operation `max()` returns `OptionalInt` object. Class `Optional` (along with `OptionalInt` and `OptionalDouble`) is introduced to Java 8. It is container which can contain or not contain value. It protects again `NullPointerException` (no need to write `if (maxVolume != null)` checks). 
+Operation `max()` returns `OptionalInt` object. Class `Optional` (along with `OptionalInt` and `OptionalDouble`) is introduced to Java 8. It is container which can contain or not contain value. It protects against `NullPointerException` (no need to write `if (maxVolume != null)` checks). 
 ###Example
 Print average bottle volume.
 ####Solution 
