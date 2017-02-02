@@ -1,4 +1,4 @@
-#Crash curse in collections with Java 8
+#Crash course in collections with Java 8
 
 All exercises can be done in `main` method of [CollectionsExercises](CollectionsExercises.java) class.
 ##Lambda Expressions
