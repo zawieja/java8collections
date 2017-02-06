@@ -150,6 +150,7 @@ beers.stream()
 Stream (`java.util.Stream`) is a sequence of elements supporting operations. There are two kinds of stream operations:
 - intermediate (returns Stream) i.e.: `filter`
 - terminal  (returns other type) i.e.: `forEach`
+
 Operations on stream don't modify source of stream. Stream operations form stream pipelines.
 
 ##Streams: filter
