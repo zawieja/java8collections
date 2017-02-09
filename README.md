@@ -122,8 +122,8 @@ beerNames.sort(String::compareTo);
 Replace lambda expressions with method references.
 ```java
 beers.stream()
-        .map(p -> p.getName())
-        .forEach(p -> System.out.println(p));
+        .map(b -> b.getName())
+        .forEach(b -> System.out.println(b));
 ```
 ####Solution
 ```java
@@ -135,9 +135,9 @@ beers.stream()
 Replace lambda expressions with method reference.
 ```java
 beers.stream()
-        .map(p -> p.getHops())
-        .map(p -> new HashSet<>(p))
-        .forEach(p -> System.out.println(p));
+        .map(b -> b.getHops())
+        .map(b -> new HashSet<>(b))
+        .forEach(b -> System.out.println(b));
 ```
 ####Solution
 ```java
@@ -158,19 +158,19 @@ Operations on stream don't modify source of stream. Stream operations form strea
 Writing down beers that have more than 5.0% alcohol in volume:
 ```java
 beers.stream()
-        .filter(p -> p.getAlcoholByValue() > 5.0)
+        .filter(b -> b.getAlcoholByValue() > 5.0)
         .forEach(System.out::println);
 ```
 ####Explanation
 `Predicate` is functional interface which is boolean-valued function of one argument. 
-Operation `filter` takes instance of `Predicate` as argument and reduces stream to elements for which `Predicate` return `true`. In above example predicate is lambda `p -> p.getAlcoholByValue() > 5.0`. `filter` is intermediate operation (as it returns stream).
+Operation `filter` takes instance of `Predicate` as argument and reduces stream to elements for which `Predicate` return `true`. In above example predicate is lambda `b -> b.getAlcoholByValue() > 5.0`. `filter` is intermediate operation (as it returns stream).
 ###Exercise 7
 Write down beers containg Cascade hop and not containg Amarillo hop.
 ####Solution
 ```java
 beers.stream()
-        .filter(p -> p.getHops().contains(HOP_CASCADE))
-        .filter(p -> !p.getHops().contains(HOP_AMARILLO))
+        .filter(b -> b.getHops().contains(HOP_CASCADE))
+        .filter(b -> !b.getHops().contains(HOP_AMARILLO))
         .forEach(System.out::println);
 ```
 ##Streams: map
@@ -178,7 +178,7 @@ beers.stream()
 Writing down names of beers from given list.
 ```java
 beers.stream()
-        .map(p -> p.getName())
+        .map(b -> b.getName())
         .forEach(System.out::println);
 ```
 ####Explanation
@@ -188,8 +188,8 @@ Write down names of beers containg Cascade hop.
 ####Solution
 ```java
 beers.stream()
-        .filter(p -> p.getHops().contains(HOP_CASCADE))
-        .map(p -> p.getName() )
+        .filter(b -> b.getHops().contains(HOP_CASCADE))
+        .map(b -> b.getName() )
         .forEach(System.out::println);
 ```
 ##Streams: sorted
@@ -218,7 +218,7 @@ Create a list of beer names.
 ####Solution
 ```java
 beerNames = beers.stream()
-        .map(p -> p.getName())
+        .map(b -> b.getName())
         .collect(Collectors.toList());
 ```
 ###Exercise 12
@@ -226,14 +226,14 @@ Create a list of beers that have more than 5.0% alcohol in volume.
 ####Solution
 ```java
 List strongBeers = beers.stream()
-        .filter(p -> p.alcoholByValue > 5.0)
+        .filter(b -> b.alcoholByValue > 5.0)
         .collect(Collectors.toList());
 ```
 ###Example
 Creating a map of beers with value of bottle volume as keys:
 ```java
 Map beersByVolume = beers.stream()
-        .collect(Collectors.groupingBy(s -> s.getBottleVolume()));
+        .collect(Collectors.groupingBy(b -> b.getBottleVolume()));
 
 beersByVolume.forEach((k,v) -> System.out.println("key: " + k.toString() + " value: " + v.toString()));
 ```
@@ -252,7 +252,7 @@ Create a sorted list of beer names containing Cascade hop.
 ####Solution
 ```java
 List<String> cascadeBeers = beers.stream()
-        .filter(p -> p.getHops().contains(HOP_CASCADE))
+        .filter(b -> b.getHops().contains(HOP_CASCADE))
         .map(Beer::getName)
         .sorted()
         .collect(Collectors.toList());
@@ -296,9 +296,9 @@ Print average alcohol of beers:
 ####Solution
 ```java
 OptionalDouble averageAlcohol = beers.stream()
-        .filter(p -> p.getHops().contains(HOP_CASCADE))
-        .filter(p -> p.getBottleVolume() > 500)
-        .mapToDouble(p -> p.getAlcoholByValue())
+        .filter(b -> b.getHops().contains(HOP_CASCADE))
+        .filter(b -> b.getBottleVolume() > 500)
+        .mapToDouble(b -> b.getAlcoholByValue())
         .average();
 
 averageAlcohol.ifPresent(System.out::println);
