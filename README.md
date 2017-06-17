@@ -45,6 +45,8 @@ Simplify lambda in following code snippet.
 Collections.sort(beerNames, (String a, String b) -> {return a.compareTo(b);} );
 ```
 #### Solution
+<details>
+<summary>Click to show</summary>
 Lambda can be simplified as follows:
 ```java
 (String a, String b) -> a.compareTo(b)
@@ -53,6 +55,7 @@ or
 ```java
 (a, b) -> a.compareTo(b)
 ```
+</details>
 ### Example
 Consider following code snippet.
 ```jave
