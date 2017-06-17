@@ -56,6 +56,7 @@ or
 (a, b) -> a.compareTo(b)
 ```
 </details>
+
 ### Example
 Consider following code snippet.
 ```jave
